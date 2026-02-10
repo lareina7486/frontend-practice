@@ -23,7 +23,9 @@ const Main = () => {
         {name}님의 순서는 {number}({number % 2 == 0 ? '짝수' : '홀수'})번째
         입니다.
       </h3>
-      <h3>{isLogin ? <div>로그아웃</div> : <div>로그인</div>}</h3>
+      <h3 className="login">
+        {isLogin ? <div>로그아웃</div> : <div>로그인</div>}
+      </h3>
     </>
   );
 };
