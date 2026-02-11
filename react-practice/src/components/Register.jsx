@@ -2,25 +2,23 @@
 import { useState } from 'react';
 
 const Register = () => {
-  const [name, setName] = useState('이름');
-  const [birth, setBirth] = useState('');
-  const [country, setCountry] = useState('');
-  const [introduction, setIntroduction] = useState('');
+  // const [name, setName] = useState('이름');
+  // const [birth, setBirth] = useState('');
+  // const [country, setCountry] = useState('');
+  // const [bio, setBio] = useState('');
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
-  };
+  const [input, setInput] = useState({
+    name: "",
+    birth: "",
+    country: "",
+    bio: "",
+  });
 
-  const onChangeBirth = (e) => {
-    setBirth(e.target.value);
-  };
-
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value);
-  };
-
-  const onChangeIntroduction = (e) => {
-    setIntroduction(e.target.value);
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.id]: e.target.value,
+    });
   };
 
   return (
@@ -30,8 +28,9 @@ const Register = () => {
       <div>
         <label htmlFor="name">이름 </label>
         <input
-          value={name}
-          onChange={onChangeName}
+          name="name"
+          value={input.name}
+          onChange={onChange}
           id="name"
           placeholder="이름을 입력해주세요"
         />
@@ -39,12 +38,12 @@ const Register = () => {
 
       <div>
         <label htmlFor="birth">생년월일 </label>
-        <input type="date" value={birth} onChange={onChangeBirth} id="birth" />
+        <input type="date" value={input.birth} onChange={onChange} id="birth" />
       </div>
 
       <div>
         <label htmlFor="country">국적 </label>
-        <select value={country} onChange={onChangeCountry} id="country">
+        <select value={input.country} onChange={onChange} id="country">
           <option value="kr">한국</option>
           <option value="us">미국</option>
           <option value="cn">중국</option>
@@ -54,15 +53,11 @@ const Register = () => {
       </div>
 
       <div>
-        <label htmlFor="introduction">소개 </label>
+        <label htmlFor="bio">소개 </label>
       </div>
 
       <div>
-        <textarea
-          value={introduction}
-          onChange={onChangeIntroduction}
-          id="introduction"
-        />
+        <textarea value={input.bio} onChange={onChange} id="bko" />
       </div>
     </>
   );
