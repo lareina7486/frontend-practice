@@ -1,6 +1,11 @@
 const Button = ({ children, text, color = 'black' }) => {
+  const onClickButton = () => {
+    console.log(text);
+    // console.log(e);
+  }
+
   return (
-    <button style={{ color }}>
+    <button onClick={onClickButton} style={{ color }}>
       {text}
       {children}
     </button>
@@ -8,3 +13,5 @@ const Button = ({ children, text, color = 'black' }) => {
 };
 
 export default Button;
+
+
