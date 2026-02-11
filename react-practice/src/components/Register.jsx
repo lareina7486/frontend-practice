@@ -1,5 +1,5 @@
 // 이름, 생년월일, 국적, 자기소개
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const Register = () => {
   // const [name, setName] = useState('이름');
@@ -8,17 +8,25 @@ const Register = () => {
   // const [bio, setBio] = useState('');
 
   const [input, setInput] = useState({
-    name: "",
-    birth: "",
-    country: "",
-    bio: "",
+    name: '',
+    birth: '',
+    country: '',
+    bio: '',
   });
+
+  const refObj = useRef();
 
   const onChange = (e) => {
     setInput({
       ...input,
       [e.target.id]: e.target.value,
     });
+  };
+
+  const onSubmit = () => {
+    if (input.name === '') {
+      refObj.current.focus();
+    }
   };
 
   return (
@@ -28,7 +36,7 @@ const Register = () => {
       <div>
         <label htmlFor="name">이름 </label>
         <input
-          name="name"
+          ref={refObj}
           value={input.name}
           onChange={onChange}
           id="name"
@@ -59,6 +67,8 @@ const Register = () => {
       <div>
         <textarea value={input.bio} onChange={onChange} id="bko" />
       </div>
+
+      <button onClick={onSubmit}>제출</button>
     </>
   );
 };
