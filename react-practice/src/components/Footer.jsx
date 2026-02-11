@@ -1,3 +1,6 @@
+import Bulb from './Bulb';
+import Counter from './Counter';
+
 const Footer = () => {
   return (
     <>
