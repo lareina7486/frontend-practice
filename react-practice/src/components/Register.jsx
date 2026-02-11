@@ -1,33 +1,7 @@
-// 이름, 생년월일, 국적, 자기소개
-import { useState, useRef } from 'react';
+import useInput from '../hooks/useInput';
 
 const Register = () => {
-  // const [name, setName] = useState('이름');
-  // const [birth, setBirth] = useState('');
-  // const [country, setCountry] = useState('');
-  // const [bio, setBio] = useState('');
-
-  const [input, setInput] = useState({
-    name: '',
-    birth: '',
-    country: '',
-    bio: '',
-  });
-
-  const refObj = useRef();
-
-  const onChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.id]: e.target.value,
-    });
-  };
-
-  const onSubmit = () => {
-    if (input.name === '') {
-      refObj.current.focus();
-    }
-  };
+  const { input, refObj, onChange, onSubmit } = useInput();
 
   return (
     <>
