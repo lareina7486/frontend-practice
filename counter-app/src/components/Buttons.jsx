@@ -1,50 +1,12 @@
 import './Buttons.css';
 
 const Buttons = ({ onClickButton }) => {
+  const values = [-100, -10, -1, 1, 10, 100];
   return (
     <div className="wrapper">
-      <button
-        onClick={() => {
-          onClickButton(-1);
-        }}
-      >
-        -1
-      </button>
-      <button
-        onClick={() => {
-          onClickButton(-10);
-        }}
-      >
-        -10
-      </button>
-      <button
-        onClick={() => {
-          onClickButton(-100);
-        }}
-      >
-        -100
-      </button>
-      <button
-        onClick={() => {
-          onClickButton(100);
-        }}
-      >
-        +100
-      </button>
-      <button
-        onClick={() => {
-          onClickButton(10);
-        }}
-      >
-        +10
-      </button>
-      <button
-        onClick={() => {
-          onClickButton(1);
-        }}
-      >
-        +1
-      </button>
+      {values.map((value) => (
+        <button onClick={() => onClickButton(value)}>{value}</button>
+      ))}
     </div>
   );
 };
