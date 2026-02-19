@@ -5,7 +5,9 @@ const Buttons = ({ onClickButton }) => {
   return (
     <div className="wrapper">
       {values.map((value) => (
-        <button onClick={() => onClickButton(value)}>{value}</button>
+        <button key={value} onClick={() => onClickButton(value)}>
+          {value}
+        </button>
       ))}
     </div>
   );

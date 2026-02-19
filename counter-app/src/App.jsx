@@ -11,11 +11,11 @@ function App() {
   };
 
   return (
-    <>
+    <div className='wrapper'>
       <h1>Simple Counter</h1>
       <View count={count} />
       <Buttons onClickButton={onClickButton} />
-    </>
+    </div>
   );
 }
 
