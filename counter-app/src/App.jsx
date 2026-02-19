@@ -7,14 +7,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   const onClickButton = (value) => {
-    setCount(count + value);
+    setCount((prev) => prev + value);
   };
 
   return (
     <>
       <h1>Simple Counter</h1>
       <View count={count} />
-      <Buttons onClick={onClickButton} />
+      <Buttons onClickButton={onClickButton} />
     </>
   );
 }

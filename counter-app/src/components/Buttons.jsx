@@ -1,18 +1,50 @@
-import './Buttons.css'
+import './Buttons.css';
 
-const Buttons = () => {
-  const onClick = () => {
-    
-  }
-
+const Buttons = ({ onClickButton }) => {
   return (
-    <div className='wrapper'>
-      <button onClick={onClick}>-1</button>
-      <button onClick={onClick}>-10</button>
-      <button onClick={onClick}>-100</button>
-      <button onClick={onClick}>+100</button>
-      <button onClick={onClick}>+10</button>
-      <button onClick={onClick}>+1</button>
+    <div className="wrapper">
+      <button
+        onClick={() => {
+          onClickButton(-1);
+        }}
+      >
+        -1
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(-10);
+        }}
+      >
+        -10
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(-100);
+        }}
+      >
+        -100
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(100);
+        }}
+      >
+        +100
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(10);
+        }}
+      >
+        +10
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(1);
+        }}
+      >
+        +1
+      </button>
     </div>
   );
 };
