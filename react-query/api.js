@@ -128,3 +128,50 @@ export async function getLikeCountByPostId(postId) {
   return body.count;
 }
 
+// 10. 좋아요 여부 조회 함수를 만듭니다.
+// 이 API는 좋아요 여부를 200(존재)과 404(미존재)로 구분하는 설계이므로,
+// 404가 에러가 아니라 정상 응답의 일부입니다.
+// 그 외 상태 코드만 에러로 처리합니다.
+export async function getLikeStatusByUsername(
+  postId,
+  username,
+) {
+  const response = await fetch(
+    `${BASE_URL}/posts/${postId}/likes/${username}`,
+  );
+  if (response.status === 200) {
+    return true;
+  }
+  if (response.status === 404) {
+    return false;
+  }
+  throw new Error("Failed to get like status of the post.");
+}
+
+// 11. 좋아요 추가 함수를 만듭니다.
+export async function likePost(postId, username) {
+  const response = await fetch(
+    `${BASE_URL}/posts/${postId}/likes/${username}`,
+    {
+      method: "POST",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to like the post.");
+  }
+}
+
+// 12. 좋아요 취소 함수를 만듭니다.
+export async function unlikePost(postId, username) {
+  const response = await fetch(
+    `${BASE_URL}/posts/${postId}/likes/${username}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to unlike the post.");
+  }
+}
